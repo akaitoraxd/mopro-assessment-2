@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Mopro Assessment 2</string>
-    <string name="alasan">Alasan</string>
+    <string name="tambah_hutang">Tambah hutang</string>
     <string name="catatan">Catatan</string>
     <string name="list_kosong">Horray ga ada hutang!</string>
+    <string name="target_hutang">Mau berhutang ke siapa?</string>
+    <string name="alasan_hutang">Alasan berutangnya kenapa?</string>
+    <string name="total_hutang">Total berhutangnya berapa?</string>
+    <string name="kepada_siapa">Berhutang ke %1$s</string>
+    <string name="kembali">Kembali</string>
+    <string name="simpan">Simpan</string>
 </resources>
