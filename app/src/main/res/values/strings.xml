@@ -14,4 +14,7 @@
     <string name="invalid_money">Masukkan input uang yang benar.</string>
     <string name="lainnya">Opsi lainnya</string>
     <string name="hapus">Hapus hutang</string>
+    <string name="pesan_hapus">Apakah hutang ini sudah dibayar?</string>
+    <string name="tombol_hapus">Sudah</string>
+    <string name="tombol_batal">Batal</string>
 </resources>

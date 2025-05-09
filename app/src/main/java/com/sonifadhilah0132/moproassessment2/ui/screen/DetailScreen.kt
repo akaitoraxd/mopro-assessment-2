@@ -55,6 +55,7 @@ fun DetailScreen(navController: NavHostController, id: Long? = null) {
     var tujuan by remember { mutableStateOf("") }
     var catatan by remember { mutableStateOf("") }
     var total by remember { mutableStateOf("") }
+    var showDialog by remember { mutableStateOf(false) }
     val totalToLong = total.toLongOrNull()
 
     LaunchedEffect(Unit) {
@@ -112,8 +113,7 @@ fun DetailScreen(navController: NavHostController, id: Long? = null) {
                     }
                     if (id != null) {
                         DeleteAction {
-                            viewModel.delete(id)
-                            navController.popBackStack()
+                            showDialog = true
                         }
                     }
                 }
@@ -130,6 +130,16 @@ fun DetailScreen(navController: NavHostController, id: Long? = null) {
             onTotalChange = { total = it },
             modifier = Modifier.padding(padding)
         )
+
+        if (id != null && showDialog) {
+            DisplayAlertDialog(
+                onDismissRequest = { showDialog = false }
+            ) {
+                showDialog = false
+                viewModel.delete(id)
+                navController.popBackStack()
+            }
+        }
     }
 }
 
