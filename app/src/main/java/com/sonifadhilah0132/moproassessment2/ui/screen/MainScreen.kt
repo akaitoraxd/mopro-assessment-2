@@ -2,6 +2,7 @@ package com.sonifadhilah0132.moproassessment2.ui.screen
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -67,12 +68,12 @@ fun MainScreen(navController: NavHostController) {
             }
         }
     ) { innerPadding ->
-        ScreenContent(Modifier.padding(innerPadding))
+        ScreenContent(Modifier.padding(innerPadding), navController)
     }
 }
 
 @Composable
-fun ScreenContent(modifier: Modifier = Modifier) {
+fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostController) {
     val viewModel: MainViewModel = viewModel()
     val data = viewModel.data
 //    val data = emptyList<Hutang>()
@@ -95,17 +96,21 @@ fun ScreenContent(modifier: Modifier = Modifier) {
             contentPadding = PaddingValues(bottom = 84.dp)
         ) {
             items(data) {
-                ListItem(hutang = it)
+                ListItem(hutang = it) {
+                    navController.navigate(Screen.FormEdit.withId(it.id))
+                }
                 HorizontalDivider()
+            }
             }
         }
     }
-}
 
 @Composable
-fun ListItem(hutang: Hutang){
+fun ListItem(hutang: Hutang, onClick: () -> Unit){
     Column(
-        modifier = Modifier.fillMaxWidth().padding(16.dp),
+        modifier = Modifier.fillMaxWidth()
+            .clickable { onClick() }
+            .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(text = stringResource(id = R.string.kepada_siapa, hutang.target),

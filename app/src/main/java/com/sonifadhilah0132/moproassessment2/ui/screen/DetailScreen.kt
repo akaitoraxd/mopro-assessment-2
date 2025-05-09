@@ -33,16 +33,28 @@ import com.sonifadhilah0132.moproassessment2.R
 import com.sonifadhilah0132.moproassessment2.ui.theme.MoproAssessment2Theme
 import androidx.compose.runtime.*
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
+const val KEY_ID_HUTANG = "idHutang"
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreen(navController: NavHostController) {
+fun DetailScreen(navController: NavHostController, id: Long? = null) {
+    val viewModel: MainViewModel = viewModel()
+
     var tujuan by remember { mutableStateOf("") }
     var catatan by remember { mutableStateOf("") }
     var total by remember { mutableStateOf("") }
-    var totalToLong = total.toLongOrNull()
+
+    LaunchedEffect(Unit) {
+        if (id == null) return@LaunchedEffect
+        val data = viewModel.getHutang(id) ?: return@LaunchedEffect
+        tujuan = data.target
+        catatan = data.catatan
+        total = data.totalHutang.toString()
+    }
 
     Scaffold(
         topBar = {
@@ -57,7 +69,10 @@ fun DetailScreen(navController: NavHostController) {
                     }
                 },
                 title = {
-                    Text(text = stringResource(id = R.string.tambah_hutang))
+                    if (id == null)
+                        Text(text = stringResource(id = R.string.tambah_hutang))
+                    else
+                        Text(text = stringResource(id = R.string.edit_hutang))
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,

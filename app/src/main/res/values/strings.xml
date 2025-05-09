@@ -9,4 +9,5 @@
     <string name="kepada_siapa">Berhutang ke %1$s</string>
     <string name="kembali">Kembali</string>
     <string name="simpan">Simpan</string>
+    <string name="edit_hutang">Ubah hutang</string>
 </resources>

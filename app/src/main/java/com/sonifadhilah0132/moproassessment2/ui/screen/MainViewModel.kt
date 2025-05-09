@@ -31,7 +31,7 @@ class MainViewModel: ViewModel() {
             4,
             "Rahman",
             "Bayar steam",
-            200000,
+            20000,
             "2025-05-07"
         ),
         Hutang(
@@ -42,4 +42,8 @@ class MainViewModel: ViewModel() {
             "2025-05-07"
         ),
     )
+
+    fun getHutang(id: Long): Hutang? {
+        return data.find { it.id == id }
+    }
 }
