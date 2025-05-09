@@ -29,7 +29,6 @@ abstract class HutangDb: RoomDatabase(){
                     INSTANCE = instance
                 }
                 return instance
-
             }
         }
     }

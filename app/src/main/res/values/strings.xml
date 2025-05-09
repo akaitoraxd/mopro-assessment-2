@@ -10,4 +10,6 @@
     <string name="kembali">Kembali</string>
     <string name="simpan">Simpan</string>
     <string name="edit_hutang">Ubah hutang</string>
+    <string name="invalid">Target dan catatan tidak boleh kosong.</string>
+    <string name="invalid_money">Masukkan input uang yang benar.</string>
 </resources>

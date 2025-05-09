@@ -126,7 +126,7 @@ fun ListItem(hutang: Hutang, onClick: () -> Unit){
         Text(text = hutang.catatan,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis)
-        Text(text = hutang.totalHutang.toString())
+        Text(text = "Rp. " + hutang.totalHutang.toString())
         Text(text = hutang.tanggal)
     }
 }
