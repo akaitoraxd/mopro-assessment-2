@@ -27,7 +27,27 @@ class DetailViewModel(private val dao: HutangDao): ViewModel() {
         }
     }
 
-    fun getHutang(id: Long): Hutang? {
-        return null
+    suspend fun getHutang(id: Long): Hutang? {
+        return dao.getHutangById(id)
+    }
+
+    fun update(id: Long, target: String, catatan: String, total: Long) {
+        val hutang = Hutang(
+            id = id,
+            tanggal = formatter.format(Date()),
+            target = target,
+            catatan = catatan,
+            totalHutang = total
+        )
+
+        viewModelScope.launch(Dispatchers.IO) {
+            dao.update(hutang)
+        }
+    }
+
+    fun delete(id: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            dao.deleteById(id)
+        }
     }
 }

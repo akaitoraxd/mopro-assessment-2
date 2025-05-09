@@ -12,4 +12,6 @@
     <string name="edit_hutang">Ubah hutang</string>
     <string name="invalid">Target dan catatan tidak boleh kosong.</string>
     <string name="invalid_money">Masukkan input uang yang benar.</string>
+    <string name="lainnya">Opsi lainnya</string>
+    <string name="hapus">Hapus hutang</string>
 </resources>

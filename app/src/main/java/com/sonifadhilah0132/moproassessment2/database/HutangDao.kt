@@ -19,4 +19,10 @@ interface HutangDao {
     @Query("SELECT * FROM hutang ORDER BY tanggal DESC")
     fun getHutang(): Flow<List<Hutang>>
 
+    @Query("SELECT * FROM hutang WHERE id = :id")
+    suspend fun getHutangById(id: Long): Hutang?
+
+    @Query("DELETE FROM hutang WHERE id = :id")
+    suspend fun  deleteById(id: Long)
+
 }
